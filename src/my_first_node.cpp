@@ -5,19 +5,19 @@ class MyNode : public rclcpp::Node
 public:
     MyNode() : Node("cpp_test"), counter_(0)
     {
-        RCLCPP_INFO(this->get_logger(), "Node constructor started");
-        
+        RCLCPP_INFO(this->get_logger(), "Hello Cpp Node");
         timer_ = this->create_wall_timer(
-            std::chrono::milliseconds(500),
-            [this]() {
-                counter_++;
-                RCLCPP_INFO(this->get_logger(), "Timer callback! Count: %d", counter_);
-            });
-            
-        RCLCPP_INFO(this->get_logger(), "Timer created successfully");
+            std::chrono::seconds(1),
+            std::bind(&MyNode::timerCallback, this));
     }
 
 private:
+    void timerCallback()
+    {
+        counter_++;
+        RCLCPP_INFO(this->get_logger(), "Hellos %d", counter_);
+    }
+
     rclcpp::TimerBase::SharedPtr timer_;
     int counter_;
 };
@@ -25,9 +25,7 @@ private:
 int main(int argc, char **argv)
 {
     rclcpp::init(argc, argv);
-    RCLCPP_INFO(rclcpp::get_logger("main"), "Creating node...");
     auto node = std::make_shared<MyNode>();
-    RCLCPP_INFO(node->get_logger(), "Starting spin...");
     rclcpp::spin(node);
     rclcpp::shutdown();
     return 0;
