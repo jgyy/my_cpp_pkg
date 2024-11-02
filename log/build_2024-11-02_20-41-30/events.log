@@ -1,0 +1,136 @@
+[0.000000] (-) TimerEvent: {}
+[0.000406] (my_cpp_pkg) JobQueued: {'identifier': 'my_cpp_pkg', 'dependencies': OrderedDict()}
+[0.004292] (my_cpp_pkg) JobStarted: {'identifier': 'my_cpp_pkg'}
+[0.021316] (my_cpp_pkg) JobProgress: {'identifier': 'my_cpp_pkg', 'progress': 'cmake'}
+[0.021631] (my_cpp_pkg) Command: {'cmd': ['/usr/bin/cmake', '/home/jegoh/ros2_ws/src/my_cpp_pkg', '-DCMAKE_INSTALL_PREFIX=/home/jegoh/ros2_ws/src/my_cpp_pkg/install/my_cpp_pkg'], 'cwd': '/home/jegoh/ros2_ws/src/my_cpp_pkg/build/my_cpp_pkg', 'env': OrderedDict({'USER': 'jegoh', 'WT_PROFILE_ID': '{d8e96812-b789-5068-a5ae-10b2fb53e95f}', 'SHLVL': '1', 'LD_LIBRARY_PATH': '/home/jegoh/ros2_ws/install/turtlesim/lib:/opt/ros/jazzy/opt/rviz_ogre_vendor/lib:/opt/ros/jazzy/lib/x86_64-linux-gnu:/opt/ros/jazzy/opt/gz_math_vendor/lib:/opt/ros/jazzy/opt/gz_utils_vendor/lib:/opt/ros/jazzy/opt/gz_cmake_vendor/lib:/opt/ros/jazzy/lib', 'HOME': '/home/jegoh', 'OLDPWD': '/home/jegoh/ros2_ws/src', 'VAGRANT_WSL_ENABLE_WINDOWS_ACCESS': '1', 'LESS': '-R', 'CAML_LD_LIBRARY_PATH': '/home/jegoh/.opam/default/lib/stublibs:/usr/local/lib/ocaml/4.14.1/stublibs:/usr/lib/ocaml/stublibs', 'ZSH': '/home/jegoh/.oh-my-zsh', 'LSCOLORS': 'Gxfxcxdxbxegedabagacad', 'OCAML_TOPLEVEL_PATH': '/home/jegoh/.opam/default/lib/toplevel', 'PAGER': 'less', 'ROS_PYTHON_VERSION': '3', 'WSL_DISTRO_NAME': 'Ubuntu-24.04', 'WAYLAND_DISPLAY': 'wayland-0', 'ROS_DISTRO': 'jazzy', 'COLCON_PREFIX_PATH': '/home/jegoh/ros2_ws/install', 'LOGNAME': 'jegoh', 'PULSE_SERVER': 'unix:/mnt/wslg/PulseServer', 'WSL_INTEROP': '/run/WSL/9_interop', 'NAME': 'jegoh', '_': '/usr/bin/colcon', 'ROS_VERSION': '2', 'TERM': 'xterm-256color', 'PATH': '/home/jegoh/.opam/default/bin:/opt/ros/jazzy/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/usr/lib/wsl/lib:/mnt/c/Program Files (x86)/VMware/VMware Workstation/bin/:/mnt/c/WINDOWS/system32:/mnt/c/WINDOWS:/mnt/c/WINDOWS/System32/Wbem:/mnt/c/WINDOWS/System32/WindowsPowerShell/v1.0/:/mnt/c/WINDOWS/System32/OpenSSH/:/mnt/c/Program Files/Microsoft VS Code/bin:/mnt/c/Program Files/Docker/Docker/resources/bin:/mnt/c/Users/Jeffr/AppData/Local/Microsoft/WindowsApps:/home/jegoh/.local/bin:/home/jegoh/.local/bin', 'XDG_RUNTIME_DIR': '/mnt/wslg/runtime-dir', 'WT_SESSION': 'abd16767-a5d6-450f-a3e2-aa004bd40a40', 'DISPLAY': ':0', 'LANG': 'en_US.UTF-8', 'LS_COLORS': 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=00:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.avif=01;35:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.webp=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:*~=00;90:*#=00;90:*.bak=00;90:*.crdownload=00;90:*.dpkg-dist=00;90:*.dpkg-new=00;90:*.dpkg-old=00;90:*.dpkg-tmp=00;90:*.old=00;90:*.orig=00;90:*.part=00;90:*.rej=00;90:*.rpmnew=00;90:*.rpmorig=00;90:*.rpmsave=00;90:*.swp=00;90:*.tmp=00;90:*.ucf-dist=00;90:*.ucf-new=00;90:*.ucf-old=00;90:', 'AMENT_PREFIX_PATH': '/home/jegoh/ros2_ws/install/turtlesim:/home/jegoh/ros2_ws/install/my_py_pkg:/home/jegoh/ros2_ws/install/my_cpp_pkg:/opt/ros/jazzy', 'SHELL': '/usr/bin/zsh', 'OPAM_SWITCH_PREFIX': '/home/jegoh/.opam/default', 'ROS_AUTOMATIC_DISCOVERY_RANGE': 'SUBNET', 'PWD': '/home/jegoh/ros2_ws/src/my_cpp_pkg/build/my_cpp_pkg', 'PYTHONPATH': '/home/jegoh/ros2_ws/install/turtlesim/lib/python3.12/site-packages:/home/jegoh/ros2_ws/install/my_py_pkg/lib/python3.12/site-packages:/opt/ros/jazzy/lib/python3.12/site-packages', 'COLCON': '1', 'HOSTTYPE': 'x86_64', 'WSL2_GUI_APPS_ENABLED': '1', 'MANPATH': ':/home/jegoh/.opam/default/man', 'WSLENV': 'WT_SESSION:WT_PROFILE_ID:', 'CMAKE_PREFIX_PATH': '/home/jegoh/ros2_ws/install/turtlesim:/home/jegoh/ros2_ws/install/my_cpp_pkg:/opt/ros/jazzy/opt/gz_math_vendor:/opt/ros/jazzy/opt/gz_utils_vendor:/opt/ros/jazzy/opt/gz_cmake_vendor:/home/jegoh/ros2_ws/install/my_py_pkg:/opt/ros/jazzy'}), 'shell': False}
+[0.099615] (-) TimerEvent: {}
+[0.200116] (-) TimerEvent: {}
+[0.300641] (-) TimerEvent: {}
+[0.401124] (-) TimerEvent: {}
+[0.426483] (my_cpp_pkg) StdoutLine: {'line': b'-- The C compiler identification is GNU 13.2.0\n'}
+[0.501312] (-) TimerEvent: {}
+[0.601784] (-) TimerEvent: {}
+[0.702241] (-) TimerEvent: {}
+[0.802675] (-) TimerEvent: {}
+[0.903165] (-) TimerEvent: {}
+[0.921735] (my_cpp_pkg) StdoutLine: {'line': b'-- The CXX compiler identification is GNU 13.2.0\n'}
+[1.003355] (-) TimerEvent: {}
+[1.103938] (-) TimerEvent: {}
+[1.205553] (-) TimerEvent: {}
+[1.275252] (my_cpp_pkg) StdoutLine: {'line': b'-- Detecting C compiler ABI info\n'}
+[1.305688] (-) TimerEvent: {}
+[1.406099] (-) TimerEvent: {}
+[1.503995] (my_cpp_pkg) StdoutLine: {'line': b'-- Detecting C compiler ABI info - done\n'}
+[1.506242] (-) TimerEvent: {}
+[1.514724] (my_cpp_pkg) StdoutLine: {'line': b'-- Check for working C compiler: /usr/bin/cc - skipped\n'}
+[1.527065] (my_cpp_pkg) StdoutLine: {'line': b'-- Detecting C compile features\n'}
+[1.528200] (my_cpp_pkg) StdoutLine: {'line': b'-- Detecting C compile features - done\n'}
+[1.598680] (my_cpp_pkg) StdoutLine: {'line': b'-- Detecting CXX compiler ABI info\n'}
+[1.606487] (-) TimerEvent: {}
+[1.707078] (-) TimerEvent: {}
+[1.807695] (-) TimerEvent: {}
+[1.832919] (my_cpp_pkg) StdoutLine: {'line': b'-- Detecting CXX compiler ABI info - done\n'}
+[1.843036] (my_cpp_pkg) StdoutLine: {'line': b'-- Check for working CXX compiler: /usr/bin/c++ - skipped\n'}
+[1.843479] (my_cpp_pkg) StdoutLine: {'line': b'-- Detecting CXX compile features\n'}
+[1.844058] (my_cpp_pkg) StdoutLine: {'line': b'-- Detecting CXX compile features - done\n'}
+[1.878495] (my_cpp_pkg) StdoutLine: {'line': b'-- Found ament_cmake: 2.5.2 (/opt/ros/jazzy/share/ament_cmake/cmake)\n'}
+[1.907848] (-) TimerEvent: {}
+[2.008287] (-) TimerEvent: {}
+[2.058954] (my_cpp_pkg) StdoutLine: {'line': b'-- Found Python3: /usr/bin/python3 (found version "3.12.3") found components: Interpreter \n'}
+[2.109480] (-) TimerEvent: {}
+[2.210214] (-) TimerEvent: {}
+[2.260999] (my_cpp_pkg) StdoutLine: {'line': b'-- Found rclcpp: 28.1.5 (/opt/ros/jazzy/share/rclcpp/cmake)\n'}
+[2.310350] (-) TimerEvent: {}
+[2.410854] (-) TimerEvent: {}
+[2.460780] (my_cpp_pkg) StdoutLine: {'line': b'-- Found rosidl_generator_c: 4.6.4 (/opt/ros/jazzy/share/rosidl_generator_c/cmake)\n'}
+[2.484881] (my_cpp_pkg) StdoutLine: {'line': b'-- Found rosidl_generator_cpp: 4.6.4 (/opt/ros/jazzy/share/rosidl_generator_cpp/cmake)\n'}
+[2.511011] (-) TimerEvent: {}
+[2.522062] (my_cpp_pkg) StdoutLine: {'line': b'-- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c\n'}
+[2.558563] (my_cpp_pkg) StdoutLine: {'line': b'-- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp\n'}
+[2.611188] (-) TimerEvent: {}
+[2.711686] (-) TimerEvent: {}
+[2.712746] (my_cpp_pkg) StdoutLine: {'line': b'-- Found rmw_implementation_cmake: 7.3.1 (/opt/ros/jazzy/share/rmw_implementation_cmake/cmake)\n'}
+[2.721003] (my_cpp_pkg) StdoutLine: {'line': b'-- Found rmw_fastrtps_cpp: 8.4.1 (/opt/ros/jazzy/share/rmw_fastrtps_cpp/cmake)\n'}
+[2.811962] (-) TimerEvent: {}
+[2.841425] (my_cpp_pkg) StdoutLine: {'line': b'-- Found OpenSSL: /usr/lib/x86_64-linux-gnu/libcrypto.so (found version "3.0.13")  \n'}
+[2.912115] (-) TimerEvent: {}
+[2.983980] (my_cpp_pkg) StdoutLine: {'line': b'-- Found FastRTPS: /opt/ros/jazzy/include (Required is at least version "2.13") \n'}
+[3.012316] (-) TimerEvent: {}
+[3.067294] (my_cpp_pkg) StdoutLine: {'line': b"-- Using RMW implementation 'rmw_fastrtps_cpp' as default\n"}
+[3.112519] (-) TimerEvent: {}
+[3.213036] (-) TimerEvent: {}
+[3.313515] (-) TimerEvent: {}
+[3.414013] (-) TimerEvent: {}
+[3.421385] (my_cpp_pkg) StdoutLine: {'line': b'-- Configuring done (3.3s)\n'}
+[3.436361] (my_cpp_pkg) StdoutLine: {'line': b'-- Generating done (0.0s)\n'}
+[3.438090] (my_cpp_pkg) StdoutLine: {'line': b'-- Build files have been written to: /home/jegoh/ros2_ws/src/my_cpp_pkg/build/my_cpp_pkg\n'}
+[3.449576] (my_cpp_pkg) CommandEnded: {'returncode': 0}
+[3.451399] (my_cpp_pkg) JobProgress: {'identifier': 'my_cpp_pkg', 'progress': 'build'}
+[3.451436] (my_cpp_pkg) Command: {'cmd': ['/usr/bin/cmake', '--build', '/home/jegoh/ros2_ws/src/my_cpp_pkg/build/my_cpp_pkg', '--', '-j16', '-l16'], 'cwd': '/home/jegoh/ros2_ws/src/my_cpp_pkg/build/my_cpp_pkg', 'env': OrderedDict({'USER': 'jegoh', 'WT_PROFILE_ID': '{d8e96812-b789-5068-a5ae-10b2fb53e95f}', 'SHLVL': '1', 'LD_LIBRARY_PATH': '/home/jegoh/ros2_ws/install/turtlesim/lib:/opt/ros/jazzy/opt/rviz_ogre_vendor/lib:/opt/ros/jazzy/lib/x86_64-linux-gnu:/opt/ros/jazzy/opt/gz_math_vendor/lib:/opt/ros/jazzy/opt/gz_utils_vendor/lib:/opt/ros/jazzy/opt/gz_cmake_vendor/lib:/opt/ros/jazzy/lib', 'HOME': '/home/jegoh', 'OLDPWD': '/home/jegoh/ros2_ws/src', 'VAGRANT_WSL_ENABLE_WINDOWS_ACCESS': '1', 'LESS': '-R', 'CAML_LD_LIBRARY_PATH': '/home/jegoh/.opam/default/lib/stublibs:/usr/local/lib/ocaml/4.14.1/stublibs:/usr/lib/ocaml/stublibs', 'ZSH': '/home/jegoh/.oh-my-zsh', 'LSCOLORS': 'Gxfxcxdxbxegedabagacad', 'OCAML_TOPLEVEL_PATH': '/home/jegoh/.opam/default/lib/toplevel', 'PAGER': 'less', 'ROS_PYTHON_VERSION': '3', 'WSL_DISTRO_NAME': 'Ubuntu-24.04', 'WAYLAND_DISPLAY': 'wayland-0', 'ROS_DISTRO': 'jazzy', 'COLCON_PREFIX_PATH': '/home/jegoh/ros2_ws/install', 'LOGNAME': 'jegoh', 'PULSE_SERVER': 'unix:/mnt/wslg/PulseServer', 'WSL_INTEROP': '/run/WSL/9_interop', 'NAME': 'jegoh', '_': '/usr/bin/colcon', 'ROS_VERSION': '2', 'TERM': 'xterm-256color', 'PATH': '/home/jegoh/.opam/default/bin:/opt/ros/jazzy/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/usr/lib/wsl/lib:/mnt/c/Program Files (x86)/VMware/VMware Workstation/bin/:/mnt/c/WINDOWS/system32:/mnt/c/WINDOWS:/mnt/c/WINDOWS/System32/Wbem:/mnt/c/WINDOWS/System32/WindowsPowerShell/v1.0/:/mnt/c/WINDOWS/System32/OpenSSH/:/mnt/c/Program Files/Microsoft VS Code/bin:/mnt/c/Program Files/Docker/Docker/resources/bin:/mnt/c/Users/Jeffr/AppData/Local/Microsoft/WindowsApps:/home/jegoh/.local/bin:/home/jegoh/.local/bin', 'XDG_RUNTIME_DIR': '/mnt/wslg/runtime-dir', 'WT_SESSION': 'abd16767-a5d6-450f-a3e2-aa004bd40a40', 'DISPLAY': ':0', 'LANG': 'en_US.UTF-8', 'LS_COLORS': 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=00:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.avif=01;35:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.webp=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:*~=00;90:*#=00;90:*.bak=00;90:*.crdownload=00;90:*.dpkg-dist=00;90:*.dpkg-new=00;90:*.dpkg-old=00;90:*.dpkg-tmp=00;90:*.old=00;90:*.orig=00;90:*.part=00;90:*.rej=00;90:*.rpmnew=00;90:*.rpmorig=00;90:*.rpmsave=00;90:*.swp=00;90:*.tmp=00;90:*.ucf-dist=00;90:*.ucf-new=00;90:*.ucf-old=00;90:', 'AMENT_PREFIX_PATH': '/home/jegoh/ros2_ws/install/turtlesim:/home/jegoh/ros2_ws/install/my_py_pkg:/home/jegoh/ros2_ws/install/my_cpp_pkg:/opt/ros/jazzy', 'SHELL': '/usr/bin/zsh', 'OPAM_SWITCH_PREFIX': '/home/jegoh/.opam/default', 'ROS_AUTOMATIC_DISCOVERY_RANGE': 'SUBNET', 'PWD': '/home/jegoh/ros2_ws/src/my_cpp_pkg/build/my_cpp_pkg', 'PYTHONPATH': '/home/jegoh/ros2_ws/install/turtlesim/lib/python3.12/site-packages:/home/jegoh/ros2_ws/install/my_py_pkg/lib/python3.12/site-packages:/opt/ros/jazzy/lib/python3.12/site-packages', 'COLCON': '1', 'HOSTTYPE': 'x86_64', 'WSL2_GUI_APPS_ENABLED': '1', 'MANPATH': ':/home/jegoh/.opam/default/man', 'WSLENV': 'WT_SESSION:WT_PROFILE_ID:', 'CMAKE_PREFIX_PATH': '/home/jegoh/ros2_ws/install/turtlesim:/home/jegoh/ros2_ws/install/my_cpp_pkg:/opt/ros/jazzy/opt/gz_math_vendor:/opt/ros/jazzy/opt/gz_utils_vendor:/opt/ros/jazzy/opt/gz_cmake_vendor:/home/jegoh/ros2_ws/install/my_py_pkg:/opt/ros/jazzy'}), 'shell': False}
+[3.508433] (my_cpp_pkg) StdoutLine: {'line': b'[ 50%] \x1b[32mBuilding CXX object CMakeFiles/cpp_node.dir/src/my_first_node.cpp.o\x1b[0m\n'}
+[3.514143] (-) TimerEvent: {}
+[3.614570] (-) TimerEvent: {}
+[3.715082] (-) TimerEvent: {}
+[3.815514] (-) TimerEvent: {}
+[3.916025] (-) TimerEvent: {}
+[4.016572] (-) TimerEvent: {}
+[4.117098] (-) TimerEvent: {}
+[4.217598] (-) TimerEvent: {}
+[4.318215] (-) TimerEvent: {}
+[4.418919] (-) TimerEvent: {}
+[4.519459] (-) TimerEvent: {}
+[4.619984] (-) TimerEvent: {}
+[4.720619] (-) TimerEvent: {}
+[4.821168] (-) TimerEvent: {}
+[4.921758] (-) TimerEvent: {}
+[5.022392] (-) TimerEvent: {}
+[5.123017] (-) TimerEvent: {}
+[5.223666] (-) TimerEvent: {}
+[5.324283] (-) TimerEvent: {}
+[5.424837] (-) TimerEvent: {}
+[5.525427] (-) TimerEvent: {}
+[5.626031] (-) TimerEvent: {}
+[5.726793] (-) TimerEvent: {}
+[5.827495] (-) TimerEvent: {}
+[5.927985] (-) TimerEvent: {}
+[6.028577] (-) TimerEvent: {}
+[6.129198] (-) TimerEvent: {}
+[6.229798] (-) TimerEvent: {}
+[6.330229] (-) TimerEvent: {}
+[6.430677] (-) TimerEvent: {}
+[6.531107] (-) TimerEvent: {}
+[6.631578] (-) TimerEvent: {}
+[6.732046] (-) TimerEvent: {}
+[6.832506] (-) TimerEvent: {}
+[6.932883] (-) TimerEvent: {}
+[7.033355] (-) TimerEvent: {}
+[7.133807] (-) TimerEvent: {}
+[7.179905] (my_cpp_pkg) StdoutLine: {'line': b'[100%] \x1b[32m\x1b[1mLinking CXX executable cpp_node\x1b[0m\n'}
+[7.234109] (-) TimerEvent: {}
+[7.334780] (-) TimerEvent: {}
+[7.367822] (my_cpp_pkg) StdoutLine: {'line': b'[100%] Built target cpp_node\n'}
+[7.376494] (my_cpp_pkg) CommandEnded: {'returncode': 0}
+[7.397207] (my_cpp_pkg) JobProgress: {'identifier': 'my_cpp_pkg', 'progress': 'install'}
+[7.405860] (my_cpp_pkg) Command: {'cmd': ['/usr/bin/cmake', '--install', '/home/jegoh/ros2_ws/src/my_cpp_pkg/build/my_cpp_pkg'], 'cwd': '/home/jegoh/ros2_ws/src/my_cpp_pkg/build/my_cpp_pkg', 'env': OrderedDict({'USER': 'jegoh', 'WT_PROFILE_ID': '{d8e96812-b789-5068-a5ae-10b2fb53e95f}', 'SHLVL': '1', 'LD_LIBRARY_PATH': '/home/jegoh/ros2_ws/install/turtlesim/lib:/opt/ros/jazzy/opt/rviz_ogre_vendor/lib:/opt/ros/jazzy/lib/x86_64-linux-gnu:/opt/ros/jazzy/opt/gz_math_vendor/lib:/opt/ros/jazzy/opt/gz_utils_vendor/lib:/opt/ros/jazzy/opt/gz_cmake_vendor/lib:/opt/ros/jazzy/lib', 'HOME': '/home/jegoh', 'OLDPWD': '/home/jegoh/ros2_ws/src', 'VAGRANT_WSL_ENABLE_WINDOWS_ACCESS': '1', 'LESS': '-R', 'CAML_LD_LIBRARY_PATH': '/home/jegoh/.opam/default/lib/stublibs:/usr/local/lib/ocaml/4.14.1/stublibs:/usr/lib/ocaml/stublibs', 'ZSH': '/home/jegoh/.oh-my-zsh', 'LSCOLORS': 'Gxfxcxdxbxegedabagacad', 'OCAML_TOPLEVEL_PATH': '/home/jegoh/.opam/default/lib/toplevel', 'PAGER': 'less', 'ROS_PYTHON_VERSION': '3', 'WSL_DISTRO_NAME': 'Ubuntu-24.04', 'WAYLAND_DISPLAY': 'wayland-0', 'ROS_DISTRO': 'jazzy', 'COLCON_PREFIX_PATH': '/home/jegoh/ros2_ws/install', 'LOGNAME': 'jegoh', 'PULSE_SERVER': 'unix:/mnt/wslg/PulseServer', 'WSL_INTEROP': '/run/WSL/9_interop', 'NAME': 'jegoh', '_': '/usr/bin/colcon', 'ROS_VERSION': '2', 'TERM': 'xterm-256color', 'PATH': '/home/jegoh/.opam/default/bin:/opt/ros/jazzy/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/usr/lib/wsl/lib:/mnt/c/Program Files (x86)/VMware/VMware Workstation/bin/:/mnt/c/WINDOWS/system32:/mnt/c/WINDOWS:/mnt/c/WINDOWS/System32/Wbem:/mnt/c/WINDOWS/System32/WindowsPowerShell/v1.0/:/mnt/c/WINDOWS/System32/OpenSSH/:/mnt/c/Program Files/Microsoft VS Code/bin:/mnt/c/Program Files/Docker/Docker/resources/bin:/mnt/c/Users/Jeffr/AppData/Local/Microsoft/WindowsApps:/home/jegoh/.local/bin:/home/jegoh/.local/bin', 'XDG_RUNTIME_DIR': '/mnt/wslg/runtime-dir', 'WT_SESSION': 'abd16767-a5d6-450f-a3e2-aa004bd40a40', 'DISPLAY': ':0', 'LANG': 'en_US.UTF-8', 'LS_COLORS': 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=00:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.avif=01;35:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.webp=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:*~=00;90:*#=00;90:*.bak=00;90:*.crdownload=00;90:*.dpkg-dist=00;90:*.dpkg-new=00;90:*.dpkg-old=00;90:*.dpkg-tmp=00;90:*.old=00;90:*.orig=00;90:*.part=00;90:*.rej=00;90:*.rpmnew=00;90:*.rpmorig=00;90:*.rpmsave=00;90:*.swp=00;90:*.tmp=00;90:*.ucf-dist=00;90:*.ucf-new=00;90:*.ucf-old=00;90:', 'AMENT_PREFIX_PATH': '/home/jegoh/ros2_ws/install/turtlesim:/home/jegoh/ros2_ws/install/my_py_pkg:/home/jegoh/ros2_ws/install/my_cpp_pkg:/opt/ros/jazzy', 'SHELL': '/usr/bin/zsh', 'OPAM_SWITCH_PREFIX': '/home/jegoh/.opam/default', 'ROS_AUTOMATIC_DISCOVERY_RANGE': 'SUBNET', 'PWD': '/home/jegoh/ros2_ws/src/my_cpp_pkg/build/my_cpp_pkg', 'PYTHONPATH': '/home/jegoh/ros2_ws/install/turtlesim/lib/python3.12/site-packages:/home/jegoh/ros2_ws/install/my_py_pkg/lib/python3.12/site-packages:/opt/ros/jazzy/lib/python3.12/site-packages', 'COLCON': '1', 'HOSTTYPE': 'x86_64', 'WSL2_GUI_APPS_ENABLED': '1', 'MANPATH': ':/home/jegoh/.opam/default/man', 'WSLENV': 'WT_SESSION:WT_PROFILE_ID:', 'CMAKE_PREFIX_PATH': '/home/jegoh/ros2_ws/install/turtlesim:/home/jegoh/ros2_ws/install/my_cpp_pkg:/opt/ros/jazzy/opt/gz_math_vendor:/opt/ros/jazzy/opt/gz_utils_vendor:/opt/ros/jazzy/opt/gz_cmake_vendor:/home/jegoh/ros2_ws/install/my_py_pkg:/opt/ros/jazzy'}), 'shell': False}
+[7.412975] (my_cpp_pkg) StdoutLine: {'line': b'-- Install configuration: ""\n'}
+[7.414631] (my_cpp_pkg) StdoutLine: {'line': b'-- Installing: /home/jegoh/ros2_ws/src/my_cpp_pkg/install/my_cpp_pkg/lib/my_cpp_pkg/cpp_node\n'}
+[7.415197] (my_cpp_pkg) StdoutLine: {'line': b'-- Set non-toolchain portion of runtime path of "/home/jegoh/ros2_ws/src/my_cpp_pkg/install/my_cpp_pkg/lib/my_cpp_pkg/cpp_node" to ""\n'}
+[7.415888] (my_cpp_pkg) StdoutLine: {'line': b'-- Installing: /home/jegoh/ros2_ws/src/my_cpp_pkg/install/my_cpp_pkg/share/ament_index/resource_index/package_run_dependencies/my_cpp_pkg\n'}
+[7.416246] (my_cpp_pkg) StdoutLine: {'line': b'-- Installing: /home/jegoh/ros2_ws/src/my_cpp_pkg/install/my_cpp_pkg/share/ament_index/resource_index/parent_prefix_path/my_cpp_pkg\n'}
+[7.416737] (my_cpp_pkg) StdoutLine: {'line': b'-- Installing: /home/jegoh/ros2_ws/src/my_cpp_pkg/install/my_cpp_pkg/share/my_cpp_pkg/environment/ament_prefix_path.sh\n'}
+[7.417026] (my_cpp_pkg) StdoutLine: {'line': b'-- Installing: /home/jegoh/ros2_ws/src/my_cpp_pkg/install/my_cpp_pkg/share/my_cpp_pkg/environment/ament_prefix_path.dsv\n'}
+[7.417374] (my_cpp_pkg) StdoutLine: {'line': b'-- Installing: /home/jegoh/ros2_ws/src/my_cpp_pkg/install/my_cpp_pkg/share/my_cpp_pkg/environment/path.sh\n'}
+[7.417599] (my_cpp_pkg) StdoutLine: {'line': b'-- Installing: /home/jegoh/ros2_ws/src/my_cpp_pkg/install/my_cpp_pkg/share/my_cpp_pkg/environment/path.dsv\n'}
+[7.417931] (my_cpp_pkg) StdoutLine: {'line': b'-- Installing: /home/jegoh/ros2_ws/src/my_cpp_pkg/install/my_cpp_pkg/share/my_cpp_pkg/local_setup.bash\n'}
+[7.418146] (my_cpp_pkg) StdoutLine: {'line': b'-- Installing: /home/jegoh/ros2_ws/src/my_cpp_pkg/install/my_cpp_pkg/share/my_cpp_pkg/local_setup.sh\n'}
+[7.418327] (my_cpp_pkg) StdoutLine: {'line': b'-- Installing: /home/jegoh/ros2_ws/src/my_cpp_pkg/install/my_cpp_pkg/share/my_cpp_pkg/local_setup.zsh\n'}
+[7.418621] (my_cpp_pkg) StdoutLine: {'line': b'-- Installing: /home/jegoh/ros2_ws/src/my_cpp_pkg/install/my_cpp_pkg/share/my_cpp_pkg/local_setup.dsv\n'}
+[7.418696] (my_cpp_pkg) StdoutLine: {'line': b'-- Installing: /home/jegoh/ros2_ws/src/my_cpp_pkg/install/my_cpp_pkg/share/my_cpp_pkg/package.dsv\n'}
+[7.418748] (my_cpp_pkg) StdoutLine: {'line': b'-- Installing: /home/jegoh/ros2_ws/src/my_cpp_pkg/install/my_cpp_pkg/share/ament_index/resource_index/packages/my_cpp_pkg\n'}
+[7.418935] (my_cpp_pkg) StdoutLine: {'line': b'-- Installing: /home/jegoh/ros2_ws/src/my_cpp_pkg/install/my_cpp_pkg/share/my_cpp_pkg/cmake/my_cpp_pkgConfig.cmake\n'}
+[7.419476] (my_cpp_pkg) StdoutLine: {'line': b'-- Installing: /home/jegoh/ros2_ws/src/my_cpp_pkg/install/my_cpp_pkg/share/my_cpp_pkg/cmake/my_cpp_pkgConfig-version.cmake\n'}
+[7.419619] (my_cpp_pkg) StdoutLine: {'line': b'-- Installing: /home/jegoh/ros2_ws/src/my_cpp_pkg/install/my_cpp_pkg/share/my_cpp_pkg/package.xml\n'}
+[7.421070] (my_cpp_pkg) CommandEnded: {'returncode': 0}
+[7.435164] (-) TimerEvent: {}
+[7.469460] (my_cpp_pkg) JobEnded: {'identifier': 'my_cpp_pkg', 'rc': 0}
+[7.470624] (-) EventReactorShutdown: {}

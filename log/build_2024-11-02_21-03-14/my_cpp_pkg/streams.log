@@ -1,0 +1,13 @@
+[0.015s] Invoking command in '/home/jegoh/ros2_ws/src/my_cpp_pkg/build/my_cpp_pkg': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/jegoh/ros2_ws/install/my_py_pkg:/opt/ros/jazzy /usr/bin/cmake --build /home/jegoh/ros2_ws/src/my_cpp_pkg/build/my_cpp_pkg -- -j16 -l16
+[0.093s] [ 50%] [32mBuilding CXX object CMakeFiles/cpp_node.dir/src/my_first_node.cpp.o[0m
+[2.505s] [01m[K/home/jegoh/ros2_ws/src/my_cpp_pkg/src/my_first_node.cpp:[m[K In constructor ‘[01m[KMyNode::[01;32m[KMyNode[m[K()[m[K’:
+[2.505s] [01m[K/home/jegoh/ros2_ws/src/my_cpp_pkg/src/my_first_node.cpp:10:50:[m[K [01;31m[Kerror: [m[Kinvalid use of non-static member function ‘[01m[Kvoid MyNode::[01;32m[KtimerCallback[m[K()[m[K’
+[2.505s]    10 |                                          [01;31m[KMyNode::timerCallback[m[K);
+[2.505s]       |                                          [01;31m[K~~~~~~~~^~~~~~~~~~~~~[m[K
+[2.505s] [01m[K/home/jegoh/ros2_ws/src/my_cpp_pkg/src/my_first_node.cpp:14:10:[m[K [01;36m[Knote: [m[Kdeclared here
+[2.505s]    14 |     void [01;36m[KtimerCallback[m[K()
+[2.505s]       |          [01;36m[K^~~~~~~~~~~~~[m[K
+[3.138s] gmake[2]: *** [CMakeFiles/cpp_node.dir/build.make:76: CMakeFiles/cpp_node.dir/src/my_first_node.cpp.o] Error 1
+[3.139s] gmake[1]: *** [CMakeFiles/Makefile2:137: CMakeFiles/cpp_node.dir/all] Error 2
+[3.139s] gmake: *** [Makefile:146: all] Error 2
+[3.141s] Invoked command in '/home/jegoh/ros2_ws/src/my_cpp_pkg/build/my_cpp_pkg' returned '2': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/jegoh/ros2_ws/install/my_py_pkg:/opt/ros/jazzy /usr/bin/cmake --build /home/jegoh/ros2_ws/src/my_cpp_pkg/build/my_cpp_pkg -- -j16 -l16

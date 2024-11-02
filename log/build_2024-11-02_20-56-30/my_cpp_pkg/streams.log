@@ -1,0 +1,13 @@
+[0.024s] Invoking command in '/home/jegoh/ros2_ws/src/my_cpp_pkg/build/my_cpp_pkg': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/jegoh/ros2_ws/install/my_py_pkg:/opt/ros/jazzy /usr/bin/cmake --build /home/jegoh/ros2_ws/src/my_cpp_pkg/build/my_cpp_pkg -- -j16 -l16
+[0.248s] [ 50%] [32mBuilding CXX object CMakeFiles/cpp_node.dir/src/my_first_node.cpp.o[0m
+[3.774s] [01m[K/home/jegoh/ros2_ws/src/my_cpp_pkg/src/my_first_node.cpp:[m[K In function ‘[01m[Kint[01;32m[K main[m[K(int, char**)[m[K’:
+[3.774s] [01m[K/home/jegoh/ros2_ws/src/my_cpp_pkg/src/my_first_node.cpp:65:23:[m[K [01;31m[Kerror: [m[K‘[01m[Kvoid MyNode::[01;32m[KspinOnce[m[K()[m[K’ is private within this context
+[3.774s]    65 |         [01;31m[Knode->spinOnce()[m[K;
+[3.774s]       |         [01;31m[K~~~~~~~~~~~~~~^~[m[K
+[3.774s] [01m[K/home/jegoh/ros2_ws/src/my_cpp_pkg/src/my_first_node.cpp:37:10:[m[K [01;36m[Knote: [m[Kdeclared private here
+[3.774s]    37 |     void [01;36m[KspinOnce[m[K()
+[3.774s]       |          [01;36m[K^~~~~~~~[m[K
+[4.542s] gmake[2]: *** [CMakeFiles/cpp_node.dir/build.make:76: CMakeFiles/cpp_node.dir/src/my_first_node.cpp.o] Error 1
+[4.543s] gmake[1]: *** [CMakeFiles/Makefile2:137: CMakeFiles/cpp_node.dir/all] Error 2
+[4.543s] gmake: *** [Makefile:146: all] Error 2
+[4.546s] Invoked command in '/home/jegoh/ros2_ws/src/my_cpp_pkg/build/my_cpp_pkg' returned '2': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/jegoh/ros2_ws/install/my_py_pkg:/opt/ros/jazzy /usr/bin/cmake --build /home/jegoh/ros2_ws/src/my_cpp_pkg/build/my_cpp_pkg -- -j16 -l16
