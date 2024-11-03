@@ -3,7 +3,7 @@
 class MyNode : public rclcpp::Node
 {
 public:
-    MyNode() : Node("cpp_test"), counter_(0)
+    MyNode() : Node("my_first_node"), counter_(0)
     {
         RCLCPP_INFO(this->get_logger(), "Hello Cpp Node");
         timer_ = this->create_wall_timer(
