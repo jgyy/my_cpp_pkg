@@ -1,40 +1,59 @@
 #include "rclcpp/rclcpp.hpp"
-#include "example_interfaces/msg/int64.hpp"
+#include "std_msgs/msg/int64.hpp"
+#include "example_interfaces/srv/set_bool.hpp"
 
-class NumberCounter : public rclcpp::Node
+class NumberCounterNode : public rclcpp::Node
 {
 public:
-    NumberCounter() : Node("number_counter"), counter_(0)
+    NumberCounterNode() : Node("number_counter"), counter_(0)
     {
-        subscription_ = this->create_subscription<example_interfaces::msg::Int64>(
-            "number", 10,
-            std::bind(&NumberCounter::number_callback, this, std::placeholders::_1));
-        publisher_ = this->create_publisher<example_interfaces::msg::Int64>("number_count", 10);
+        number_subscriber_ = this->create_subscription<std_msgs::msg::Int64>(
+            "/number", 10,
+            std::bind(&NumberCounterNode::callbackNumber, this, std::placeholders::_1));
+        counter_publisher_ = this->create_publisher<std_msgs::msg::Int64>("/number_count", 10);
 
-        RCLCPP_INFO(this->get_logger(), "Number Counter has been started");
+        reset_service_ = this->create_service<example_interfaces::srv::SetBool>(
+            "/reset_number_count",
+            std::bind(&NumberCounterNode::callbackResetCounter, this,
+                      std::placeholders::_1, std::placeholders::_2));
+
+        RCLCPP_INFO(this->get_logger(), "Number Counter Node has been started");
     }
 
 private:
-    void number_callback(const example_interfaces::msg::Int64::SharedPtr msg)
+    void callbackNumber(const std_msgs::msg::Int64::SharedPtr msg)
     {
         counter_ += msg->data;
 
-        auto count_msg = example_interfaces::msg::Int64();
-        count_msg.data = counter_;
-        publisher_->publish(count_msg);
-
-        RCLCPP_INFO(this->get_logger(), "Counter updated: %ld", counter_);
+        auto msg_count = std_msgs::msg::Int64();
+        msg_count.data = counter_;
+        counter_publisher_->publish(msg_count);
     }
 
-    rclcpp::Subscription<example_interfaces::msg::Int64>::SharedPtr subscription_;
-    rclcpp::Publisher<example_interfaces::msg::Int64>::SharedPtr publisher_;
+    void callbackResetCounter(
+        const example_interfaces::srv::SetBool::Request::SharedPtr request,
+        example_interfaces::srv::SetBool::Response::SharedPtr response)
+    {
+        if (request->data) {
+            counter_ = 0;
+            response->success = true;
+            response->message = "Counter has been reset to 0";
+        } else {
+            response->success = false;
+            response->message = "Counter was not reset";
+        }
+    }
+
+    rclcpp::Subscription<std_msgs::msg::Int64>::SharedPtr number_subscriber_;
+    rclcpp::Publisher<std_msgs::msg::Int64>::SharedPtr counter_publisher_;
+    rclcpp::Service<example_interfaces::srv::SetBool>::SharedPtr reset_service_;
     int64_t counter_;
 };
 
 int main(int argc, char **argv)
 {
     rclcpp::init(argc, argv);
-    auto node = std::make_shared<NumberCounter>();
+    auto node = std::make_shared<NumberCounterNode>();
     rclcpp::spin(node);
     rclcpp::shutdown();
     return 0;
