@@ -31,6 +31,9 @@ ament_target_dependencies(number_counter rclcpp example_interfaces)
 add_executable(add_two_ints_server src/add_two_ints_server.cpp)
 ament_target_dependencies(add_two_ints_server rclcpp example_interfaces)
 
+add_executable(add_two_ints_client src/add_two_ints_client.cpp)
+ament_target_dependencies(add_two_ints_client rclcpp example_interfaces)
+
 add_executable(add_two_ints_client_no_oop src/add_two_ints_client_no_oop.cpp)
 ament_target_dependencies(add_two_ints_client_no_oop rclcpp example_interfaces)
 
@@ -42,6 +45,7 @@ install(TARGETS
   number_counter
   add_two_ints_server
   add_two_ints_client_no_oop
+  add_two_ints_client
   DESTINATION lib/${PROJECT_NAME}
 )
 
