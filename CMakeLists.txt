@@ -33,6 +33,13 @@ ament_target_dependencies(number_counter
     example_interfaces
 )
 
+add_executable(reset_counter_client src/reset_counter_client.cpp)
+ament_target_dependencies(reset_counter_client
+    rclcpp
+    std_msgs
+    example_interfaces
+)
+
 add_executable(add_two_ints_server src/add_two_ints_server.cpp)
 ament_target_dependencies(add_two_ints_server rclcpp example_interfaces)
 
@@ -48,6 +55,7 @@ install(TARGETS
   smartphone
   number_publisher
   number_counter
+  reset_counter_client
   add_two_ints_server
   add_two_ints_client_no_oop
   add_two_ints_client
