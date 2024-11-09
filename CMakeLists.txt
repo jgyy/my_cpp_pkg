@@ -15,6 +15,10 @@ find_package(std_msgs REQUIRED)
 find_package(example_interfaces REQUIRED)
 find_package(my_robot_interfaces REQUIRED)
 
+set(node_plugins "")
+
+include_directories(include)
+
 add_executable(my_first_node src/my_first_node.cpp)
 ament_target_dependencies(my_first_node rclcpp)
 
@@ -53,6 +57,12 @@ ament_target_dependencies(add_two_ints_client_no_oop rclcpp example_interfaces)
 add_executable(hardware_status_publisher src/hw_status_publisher.cpp)
 ament_target_dependencies(hardware_status_publisher rclcpp my_robot_interfaces)
 
+add_executable(battery_node src/battery_node.cpp)
+ament_target_dependencies(battery_node rclcpp my_robot_interfaces)
+
+add_executable(led_panel_node src/led_panel_node.cpp)
+ament_target_dependencies(led_panel_node rclcpp my_robot_interfaces)
+
 install(TARGETS
   my_first_node
   robot_news_station
@@ -64,6 +74,8 @@ install(TARGETS
   add_two_ints_client_no_oop
   add_two_ints_client
   hardware_status_publisher
+  battery_node
+  led_panel_node
   DESTINATION lib/${PROJECT_NAME}
 )
 
