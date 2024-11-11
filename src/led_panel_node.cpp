@@ -4,16 +4,39 @@ using namespace std::chrono_literals;
 using SetLed = my_robot_interfaces::srv::SetLed;
 using LedStates = my_robot_interfaces::msg::LedStates;
 
-LedPanelNode::LedPanelNode() : Node("led_panel_node")
+LedPanelNode::LedPanelNode() : Node("led_panel")
 {
     led_states_.fill(false);
     service_ = create_service<SetLed>("set_led",
         std::bind(&LedPanelNode::set_led_callback, this,
             std::placeholders::_1, std::placeholders::_2));
     publisher_ = create_publisher<LedStates>("led_panel_state", 10);
-    timer_ = create_wall_timer(
-        100ms, std::bind(&LedPanelNode::publish_led_states, this));
-    RCLCPP_INFO(get_logger(), "LED panel node initialized");
+    std::vector<int64_t> default_states = {0, 0, 0, 0};
+    this->declare_parameter("led_states", default_states);
+
+    this->create_wall_timer(
+        std::chrono::milliseconds(2000),
+        std::bind(&LedPanelNode::checkLedStates, this));
+    timer_ = this->create_wall_timer(
+        std::chrono::milliseconds(100),
+        std::bind(&LedPanelNode::publish_led_states, this));
+    RCLCPP_INFO(get_logger(), "LED panel node has been started");
+}
+
+void LedPanelNode::checkLedStates()
+{
+    auto led_states = this->get_parameter("led_states").as_integer_array();
+    std::string state_str;
+    for(size_t i = 0; i < led_states.size(); ++i)
+    {
+        state_str += "LED " + std::to_string(i) + ": "
+            + (led_states[i] == 1 ? "ON" : "OFF");
+        if (i < led_states.size() - 1)
+        {
+            state_str += ", ";
+        }
+    }
+    RCLCPP_INFO(this->get_logger(), "Current LED states: %s", state_str.c_str());
 }
 
 void LedPanelNode::set_led_callback(

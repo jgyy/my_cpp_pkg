@@ -1,13 +1,15 @@
 #include "rclcpp/rclcpp.hpp"
-#include "example_interfaces/msg/string.hpp"
+#include "std_msgs/msg/string.hpp"
 
 class RobotNewsStationNode : public rclcpp::Node
 {
 public:
-    RobotNewsStationNode() : Node("robot_news_station"), robot_name_("R2D2")
+    RobotNewsStationNode() : Node("robot_news_station")
     {
-        publisher_ = this->create_publisher<example_interfaces::msg::String>("robot_news", 10);
-        timer_ = this->create_wall_timer(std::chrono::milliseconds(500),
+        this->declare_parameter("robot_name", "R2D2");
+
+        publisher_ = this->create_publisher<std_msgs::msg::String>("robot_news", 10);
+        timer_ = this->create_wall_timer(std::chrono::milliseconds(2000),
                             std::bind(&RobotNewsStationNode::publishNews, this));
         RCLCPP_INFO(this->get_logger(), "Robot News Station has been started.");
     }
@@ -15,14 +17,13 @@ public:
 private:
     void publishNews()
     {
-        auto msg = example_interfaces::msg::String();
-        msg.data = std::string("Hi, this is ") + robot_name_ + std::string(" from the Robot News Station");
-        publisher_->publish(msg);
-
+        auto message = std_msgs::msg::String();
+        std::string robot_name = this->get_parameter("robot_name").as_string();
+        message.data = "Hi, this is " + robot_name + " from the Robot News Station!";
+        publisher_->publish(message);
     }
 
-    std::string robot_name_;
-    rclcpp::Publisher<example_interfaces::msg::String>::SharedPtr publisher_;
+    rclcpp::Publisher<std_msgs::msg::String>::SharedPtr publisher_;
     rclcpp::TimerBase::SharedPtr timer_;
 };
 

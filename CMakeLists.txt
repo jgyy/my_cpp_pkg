@@ -23,7 +23,7 @@ add_executable(my_first_node src/my_first_node.cpp)
 ament_target_dependencies(my_first_node rclcpp)
 
 add_executable(robot_news_station src/robot_news_station.cpp)
-ament_target_dependencies(robot_news_station rclcpp example_interfaces)
+ament_target_dependencies(robot_news_station rclcpp std_msgs)
 
 add_executable(smartphone src/smartphone.cpp)
 ament_target_dependencies(smartphone rclcpp example_interfaces)
