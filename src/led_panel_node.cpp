@@ -4,7 +4,7 @@ using namespace std::chrono_literals;
 using SetLed = my_robot_interfaces::srv::SetLed;
 using LedStates = my_robot_interfaces::msg::LedStates;
 
-LedPanelNode::LedPanelNode() : Node("led_panel")
+LedPanelNode::LedPanelNode() : Node("led_panel_node")
 {
     led_states_.fill(false);
     service_ = create_service<SetLed>("set_led",
