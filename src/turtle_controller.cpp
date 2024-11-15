@@ -2,9 +2,11 @@
 #include <turtlesim/msg/pose.hpp>
 #include <geometry_msgs/msg/twist.hpp>
 #include <turtlesim/srv/kill.hpp>
+#include <turtlesim/srv/spawn.hpp>
 #include <memory>
 #include <vector>
 #include <cmath>
+#include <random>
 
 class TurtleController: public rclcpp::Node
 {
@@ -17,6 +19,9 @@ public:
         velocity_publisher_ = this->create_publisher<geometry_msgs::msg::Twist>(
             "/turtle1/cmd_vel", 10);
         kill_client_ = this->create_client<turtlesim::srv::Kill>("kill");
+        spawn_check_timer_ = this->create_wall_timer(
+            std::chrono::milliseconds(100),
+            std::bind(&TurtleController::check_for_new_turtles, this));
         RCLCPP_INFO(this->get_logger(), "Turtle Controller initialized");
     }
 
@@ -25,6 +30,21 @@ private:
     {
         current_pose_ = *msg;
         move_to_nearest_turtle();
+    }
+
+    void check_for_new_turtles()
+    {
+        if (target_turtles_.size() < expected_turtle_count_)
+        {
+            std::random_device rd;
+            std::mt19937 gen(rd());
+            std::uniform_real_distribution<> dis(0.0, 11.0);
+            target_turtles_.push_back(std::make_pair(dis(gen), dis(gen)));
+            RCLCPP_INFO(
+                this->get_logger(), "Added new target turtle at (%.2f, %.2f)",
+                target_turtles_.back().first, target_turtles_.back().second);
+        }
+        expected_turtle_count_++;
     }
 
     void move_to_nearest_turtle()
@@ -87,8 +107,10 @@ private:
     rclcpp::Subscription<turtlesim::msg::Pose>::SharedPtr pose_subscriber_;
     rclcpp::Publisher<geometry_msgs::msg::Twist>::SharedPtr velocity_publisher_;
     rclcpp::Client<turtlesim::srv::Kill>::SharedPtr kill_client_;
+    rclcpp::TimerBase::SharedPtr spawn_check_timer_;
     turtlesim::msg::Pose current_pose_;
     std::vector<std::pair<double, double>> target_turtles_;
+    size_t expected_turtle_count_ = 2;
 };
 
 int main(int argc, char **argv)
