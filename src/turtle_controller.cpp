@@ -14,7 +14,7 @@ public:
         pose_subscriber_ = this->create_subscription<turtlesim::msg::Pose>(
             "/turtle1/pose", 10,
             std::bind(&TurtleController::pose_callback, this, std::placeholders::_1));
-        velocity_publisher_ = this->create_publisher<geometry_msg::msg::Twist>(
+        velocity_publisher_ = this->create_publisher<geometry_msgs::msg::Twist>(
             "/turtle1/cmd_vel", 10);
         kill_client_ = this->create_client<turtlesim::srv::Kill>("kill");
         RCLCPP_INFO(this->get_logger(), "Turtle Controller initialized");
@@ -29,7 +29,7 @@ private:
 
     void move_to_nearest_turtle()
     {
-        if (target_turtles._empty())
+        if (target_turtles_.empty())
         {
             auto twist_msg = geometry_msgs::msg::Twist();
             twist_msg.linear.x = 0.0;
@@ -58,14 +58,14 @@ private:
         double angle_diff = target_angle - current_pose_.theta;
         while (angle_diff > M_PI) angle_diff -= 2 * M_PI;
         while (angle_diff < -M_PI) angle_diff += 2 * M_PI;
-        auto twist_msg = getmetry_msgs::msg::Twist();
+        auto twist_msg = geometry_msgs::msg::Twist();
         if (min_distance < 0.5)
         {
             target_turtles_.erase(target_turtles_.begin() + nearest_index);
             auto kill_request = std::make_shared<turtlesim::srv::Kill::Request>();
             kill_request->name = "turtle_" + std::to_string(nearest_index + 2);
             kill_client_->async_send_request(kill_request);
-            RCLCPP_INFO(this->get_logger(), "Caught turtle_%d!", nearest_index + 2);
+            RCLCPP_INFO(this->get_logger(), "Caught turtle_%ld!", nearest_index + 2);
             return;
         }
         const double ANGULAR_SPEED = 1.5;
@@ -89,7 +89,7 @@ private:
     rclcpp::Client<turtlesim::srv::Kill>::SharedPtr kill_client_;
     turtlesim::msg::Pose current_pose_;
     std::vector<std::pair<double, double>> target_turtles_;
-}
+};
 
 int main(int argc, char **argv)
 {

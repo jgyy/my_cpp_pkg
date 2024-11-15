@@ -33,7 +33,7 @@ private:
     rclcpp::Client<turtlesim::srv::Spawn>::SharedPtr spawn_client_;
     rclcpp::TimerBase::SharedPtr spawn_timer_;
     int turtle_count_ = 2;
-}
+};
 
 int main(int argc, char **argv)
 {
