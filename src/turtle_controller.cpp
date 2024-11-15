@@ -19,9 +19,7 @@ public:
         velocity_publisher_ = this->create_publisher<geometry_msgs::msg::Twist>(
             "/turtle1/cmd_vel", 10);
         kill_client_ = this->create_client<turtlesim::srv::Kill>("kill");
-        spawn_check_timer_ = this->create_wall_timer(
-            std::chrono::milliseconds(100),
-            std::bind(&TurtleController::check_for_new_turtles, this));
+        current_target_id_ = 2;
         RCLCPP_INFO(this->get_logger(), "Turtle Controller initialized");
     }
 
@@ -32,60 +30,36 @@ private:
         move_to_nearest_turtle();
     }
 
-    void check_for_new_turtles()
-    {
-        if (target_turtles_.size() < expected_turtle_count_)
-        {
-            std::random_device rd;
-            std::mt19937 gen(rd());
-            std::uniform_real_distribution<> dis(0.0, 11.0);
-            target_turtles_.push_back(std::make_pair(dis(gen), dis(gen)));
-            RCLCPP_INFO(
-                this->get_logger(), "Added new target turtle at (%.2f, %.2f)",
-                target_turtles_.back().first, target_turtles_.back().second);
-        }
-        expected_turtle_count_++;
-    }
-
     void move_to_nearest_turtle()
     {
         if (target_turtles_.empty())
         {
-            auto twist_msg = geometry_msgs::msg::Twist();
-            twist_msg.linear.x = 0.0;
-            twist_msg.angular.z = 0.0;
-            velocity_publisher_->publish(twist_msg);
-            return;
+            std::string turtle_name = "turtle_" + std::to_string(current_target_id_);
+            target_turtles_.push_back(std::make_pair(
+                static_cast<double>(current_target_id_ % 2 == 0 ? 2.0 : 9.0),
+                static_cast<double>(current_target_id_ % 4 < 2 ? 2.0 : 9.0)));
         }
-        double min_distance = std::numeric_limits<double>::max();
-        size_t nearest_index = 0;
-        for (size_t i = 0; i < target_turtles_.size(); ++i)
-        {
-            double dx = target_turtles_[i].first - current_pose_.x;
-            double dy = target_turtles_[i].second - current_pose_.y;
-            double distance = std::sqrt(dx * dx + dy * dy);
-            if (distance < min_distance)
-            {
-                min_distance = distance;
-                nearest_index = i;
-            }
-        }
-        double target_x = target_turtles_[nearest_index].first;
-        double target_y = target_turtles_[nearest_index].second;
+        double target_x = target_turtles_[0].first;
+        double target_y = target_turtles_[0].second;
         double dx = target_x - current_pose_.x;
         double dy = target_y - current_pose_.y;
+        double distance = std::sqrt(dx * dx + dy * dy);
         double target_angle = std::atan2(dy, dx);
         double angle_diff = target_angle - current_pose_.theta;
         while (angle_diff > M_PI) angle_diff -= 2 * M_PI;
         while (angle_diff < -M_PI) angle_diff += 2 * M_PI;
         auto twist_msg = geometry_msgs::msg::Twist();
-        if (min_distance < 0.5)
+        if (distance < 0.5)
         {
-            target_turtles_.erase(target_turtles_.begin() + nearest_index);
+            twist_msg.linear.x = 0.0;
+            twist_msg.angular.z = 0.0;
+            velocity_publisher_->publish(twist_msg);
             auto kill_request = std::make_shared<turtlesim::srv::Kill::Request>();
-            kill_request->name = "turtle_" + std::to_string(nearest_index + 2);
+            kill_request->name = "turtle_" + std::to_string(current_target_id_);
             kill_client_->async_send_request(kill_request);
-            RCLCPP_INFO(this->get_logger(), "Caught turtle_%ld!", nearest_index + 2);
+            RCLCPP_INFO(this->get_logger(), "Caught turtle_%d!", current_target_id_);
+            target_turtles_.clear();
+            current_target_id_++;
             return;
         }
         const double ANGULAR_SPEED = 1.5;
@@ -98,8 +72,8 @@ private:
         }
         else
         {
-            twist_msg.linear.x = LINEAR_SPEED;
-            twist_msg.angular.z = angle_diff * 0.5;
+            twist_msg.linear.x = LINEAR_SPEED * (1.0 - std::abs(angle_diff) / M_PI);
+            twist_msg.angular.z = angle_diff * 1.0;
         }
         velocity_publisher_->publish(twist_msg);
     }
@@ -110,7 +84,7 @@ private:
     rclcpp::TimerBase::SharedPtr spawn_check_timer_;
     turtlesim::msg::Pose current_pose_;
     std::vector<std::pair<double, double>> target_turtles_;
-    size_t expected_turtle_count_ = 2;
+    int current_target_id_;
 };
 
 int main(int argc, char **argv)
