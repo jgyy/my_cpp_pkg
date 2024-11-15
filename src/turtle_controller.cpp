@@ -7,6 +7,8 @@
 #include <vector>
 #include <cmath>
 #include <random>
+#include <map>
+#include <string>
 
 class TurtleController: public rclcpp::Node
 {
@@ -19,30 +21,56 @@ public:
         velocity_publisher_ = this->create_publisher<geometry_msgs::msg::Twist>(
             "/turtle1/cmd_vel", 10);
         kill_client_ = this->create_client<turtlesim::srv::Kill>("kill");
+        turtle_check_timer_ = this->create_wall_timer(
+            std::chrono::milliseconds(500),
+            std::bind(&TurtleController::check_for_new_turtles, this));
         current_target_id_ = 2;
         RCLCPP_INFO(this->get_logger(), "Turtle Controller initialized");
     }
 
 private:
+    void check_for_new_turtles()
+    {
+        std::string turtle_name = "turtle_" + std::to_string(current_target_id_);
+        if (turtle_pose_subscribers_.find(turtle_name)
+            == turtle_pose_subscribers_.end())
+        {
+            try
+            {
+                auto sub = this->create_subscription<turtlesim::msg::Pose>(
+                    "/" + turtle_name + "/pose", 10,
+                    [this, turtle_name](const turtlesim::msg::Pose::SharedPtr msg)
+                    {
+                        turtle_poses_[turtle_name] = *msg;
+                    });
+                turtle_pose_subscribers_[turtle_name] = sub;
+                RCLCPP_INFO(this->get_logger(), "Subscribed to %s",
+                    turtle_name.c_str());
+            }
+            catch (const std::exception &e)
+            {
+                RCLCPP_ERROR(this->get_logger(), "Failed to subscribe to %s: %s",
+                    turtle_name.c_str(), e.what());
+            }
+        }
+    }
+
     void pose_callback(const turtlesim::msg::Pose::SharedPtr msg)
     {
         current_pose_ = *msg;
-        move_to_nearest_turtle();
+        move_to_turtle();
     }
 
-    void move_to_nearest_turtle()
+    void move_to_turtle()
     {
-        if (target_turtles_.empty())
+        std::string target_name = "turtle_" + std::to_string(current_target_id_);
+        if (turtle_poses_.find(target_name) == turtle_poses_.end())
         {
-            std::string turtle_name = "turtle_" + std::to_string(current_target_id_);
-            target_turtles_.push_back(std::make_pair(
-                static_cast<double>(current_target_id_ % 2 == 0 ? 2.0 : 9.0),
-                static_cast<double>(current_target_id_ % 4 < 2 ? 2.0 : 9.0)));
+            return;
         }
-        double target_x = target_turtles_[0].first;
-        double target_y = target_turtles_[0].second;
-        double dx = target_x - current_pose_.x;
-        double dy = target_y - current_pose_.y;
+        auto &target_pose = turtle_poses_[target_name];
+        double dx = target_pose.x - current_pose_.x;
+        double dy = target_pose.y - current_pose_.y;
         double distance = std::sqrt(dx * dx + dy * dy);
         double target_angle = std::atan2(dy, dx);
         double angle_diff = target_angle - current_pose_.theta;
@@ -55,10 +83,11 @@ private:
             twist_msg.angular.z = 0.0;
             velocity_publisher_->publish(twist_msg);
             auto kill_request = std::make_shared<turtlesim::srv::Kill::Request>();
-            kill_request->name = "turtle_" + std::to_string(current_target_id_);
+            kill_request->name = target_name;
             kill_client_->async_send_request(kill_request);
-            RCLCPP_INFO(this->get_logger(), "Caught turtle_%d!", current_target_id_);
-            target_turtles_.clear();
+            RCLCPP_INFO(this->get_logger(), "Caught %s!", target_name.c_str());
+            turtle_poses_.erase(target_name);
+            turtle_pose_subscribers_.erase(target_name);
             current_target_id_++;
             return;
         }
@@ -81,9 +110,11 @@ private:
     rclcpp::Subscription<turtlesim::msg::Pose>::SharedPtr pose_subscriber_;
     rclcpp::Publisher<geometry_msgs::msg::Twist>::SharedPtr velocity_publisher_;
     rclcpp::Client<turtlesim::srv::Kill>::SharedPtr kill_client_;
-    rclcpp::TimerBase::SharedPtr spawn_check_timer_;
+    rclcpp::TimerBase::SharedPtr turtle_check_timer_;
+    std::map<std::string, rclcpp::Subscription<
+        turtlesim::msg::Pose>::SharedPtr> turtle_pose_subscribers_;
+    std::map<std::string, turtlesim::msg::Pose> turtle_poses_;
     turtlesim::msg::Pose current_pose_;
-    std::vector<std::pair<double, double>> target_turtles_;
     int current_target_id_;
 };
 
